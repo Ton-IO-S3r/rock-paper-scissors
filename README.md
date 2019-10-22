@@ -1,0 +1,1 @@
+This is the ROCK-PAPER-SCISSORS 1st project from the javascript basics. This game runs on the JS Console and it consists in a 5 round "rock - paper - scissors" play against computer.

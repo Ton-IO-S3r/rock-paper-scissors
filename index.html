@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ROCK-PAPER-SCISSORS</title>
+    </head>
+    <body>
+        <script>
+            "use strict";
+            
+            function computerPlay ()
+            {
+                let computerOption = ["ROCK","PAPER","SCISSORS"];
+                let optionValue = Math.floor(Math.random() * (3 - 1 + 1) );
+                return computerOption[optionValue];
+            }
+
+            function playSingleRound(playerSelection, computerSelection)
+            {
+                if(playerSelection == computerSelection)
+                {
+                    return "T";
+                }
+                if((playerSelection=="ROCK" && computerSelection=="SCISSORS") || (playerSelection=="PAPER" && computerSelection=="ROCK") || (playerSelection=="SCISSORS" && computerSelection=="PAPER"))
+                {
+                    return "P";
+                }
+                if((playerSelection=="ROCK" && computerSelection=="PAPER") || (playerSelection=="PAPER" && computerSelection=="SCISSORS") || (playerSelection=="SCISSORS" && computerSelection=="ROCK"))
+                {
+                    return "C";
+                }
+            }
+
+            function validateSelection (selection)
+            {
+                while(!((selection.toUpperCase() == "ROCK") || (selection.toUpperCase() == "PAPER") || (selection.toUpperCase() == "SCISSORS")))
+                {
+                    selection = prompt("C'mon, you know this game! Please write only one of the possible options: ROCK, PAPER or SCISSORS:");
+                }
+                return selection.toUpperCase();
+            }
+
+            function game()
+            {
+                let playerPoints=0, cpuPoints=0;
+                for (let i = 0; i < 5 ; i++)
+                {
+                    console.log("ROUND " + (i+1));
+
+                    const cpuSelection = computerPlay();
+                    let playerSelection = prompt("Write your selection: ");
+                    playerSelection = playerSelection.toUpperCase();
+                    playerSelection = validateSelection(playerSelection)
+
+                    let result = playSingleRound(playerSelection, cpuSelection);
+                    if(result == "T")
+                    {
+                        console.log("IT'S A TIE; BOTH CHOOSE " + playerSelection)
+                    }
+                    if(result == "P")
+                    {
+                        playerPoints++;
+                        console.log("+ PLAYER WINS; " + playerSelection + " BEATS " + cpuSelection)
+                    }
+                    if(result == "C")
+                    {
+                        cpuPoints++;
+                        console.log("- COMPUTER WINS; " + cpuSelection + " BEATS " + playerSelection)
+                    }
+
+                }
+                if(playerPoints < cpuPoints)
+                {
+                    return "SORRY, YOU LOSE THE GAME!!"
+                }
+                if(playerPoints > cpuPoints)
+                {
+                    return "CONGRATULATIONS, YOU WIN THE GAME!!"
+                }
+                if(playerPoints == cpuPoints)
+                {
+                    return "IT'S A TIE"
+                }
+            }
+        </script>
+    </body>
+</html>
