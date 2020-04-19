@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color:  #8F9F7E;
+    height: 100%;
+}
+h1{
+    font-size: 40px;
+    text-align: left;
+}
+button{
+    outline: none;
+}
+button:disabled{
+    background-color: gray;
+    opacity: 0.8;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#E1D9B4;
+    color: #0C4767;
+}
+.header h1{
+    width: 50%;
+    margin: 25px 50px;
+}
+.header div{
+    width: 30%;
+    margin: 25px 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.gamectrl_btn{
+    background-color: #0C4767;
+    width: 80px;
+    height: 40px;
+    margin: 0 5px;
+    border-radius: 5px;
+    color: whitesmoke;
+}
+.content{
+    color: rgb(179, 197, 75);
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    height: 800px;
+    /* align-items: flex-start; */
+}
+.content h1{
+    width: fit-content;
+    height: fit-content;
+    margin: 20px auto;
+}
+.content.inactive{
+    color: rgb(52, 82, 98);
+}
+.game-el-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    visibility: hidden;
+}
+.game-el-container h2{
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+button.option{
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    background-color: #E1D9B4;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100px 100px;
+    padding-top: 150px;
+    font-size: 35px;
+    border-radius: 30px;
+    border: none;
+}
+
+button.option:hover{
+    background-color: #5E8499;
+    opacity: 0.7;
+}
+
+button#rock{
+    background-image: url("../images/rock-win.png");
+}
+button#paper{
+    background-image: url("../images/paper-win.png");
+}
+button#scissors{
+    background-image: url("../images/scissors-win.png");
+}
+.score{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.score h1, .score #partial-result{
+    color: #0C4767;
+    font-weight: bold;
+    margin: 15px auto;
+}
+.cover{
+    width: 100%;
+    height: 100vh;
+    background-color: gray;
+    position: absolute;
+    top: 0;
+    opacity: 0.8;
+    z-index: 99;
+    display: none;
+}
+.winnerPopup{
+    width: 400px;
+    height: 400px;
+    background-color: #B9A44C;
+    color: #0C4767;
+    text-align: center;
+    position: fixed;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+    z-index: 99;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    display: none;
+}
+
+.winnerPopup h1{
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    margin: 50px auto;
+    padding: 10px;
+}
+.winnerPopup h3{
+    width: 100%;
+}
+
+
+.foot-btns{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 20px;
+    left: 20%;
+}
+
+.cover.visible, .winnerPopup.visible{
+    display: flex;
+}

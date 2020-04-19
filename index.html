@@ -1,86 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ROCK-PAPER-SCISSORS</title>
+        <link rel="stylesheet" href="./css/styles.css">
     </head>
     <body>
-        <script>
-            "use strict";
-            
-            function computerPlay ()
-            {
-                let computerOption = ["ROCK","PAPER","SCISSORS"];
-                let optionValue = Math.floor(Math.random() * (3 - 1 + 1) );
-                return computerOption[optionValue];
-            }
+        <div class="header">
+            <h1>Let's play! ROCK-PAPER-SCISSORS</h1>
+            <div>
+                <button class="gamectrl_btn" id="start">START</button>
+                <button class="gamectrl_btn" id="reset" disabled>RESET</button>
+                <button class="gamectrl_btn" id="endgame" disabled>END GAME</button>
+            </div>
+        </div>
+        <div class="content inactive">
+            <h1>Begin the game by pressing the "START" button </h1>
+            <div class="game-el-container">
+                <h2>Click on your choice:</h2>
+                <button class="option" id="rock">ROCK</button>
+                <button class="option" id="paper">PAPER</button>
+                <button class="option" id="scissors">SCISSORS</button>
+                <div class="score">
+                    <h2 id="partial-result"></h2>
+                    <div class="player-score">
+                        <h2>YOUR SCORE:</h2>
+                        <h1 id="player-score-lbl">--</h1>
+                    </div>
+                    <div class="cpu-score">
+                        <h2>CPU SCORE:</h2>
+                        <h1 id="cpu-score-lbl">--</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            function playSingleRound(playerSelection, computerSelection)
-            {
-                if(playerSelection == computerSelection)
-                {
-                    return "T";
-                }
-                if((playerSelection=="ROCK" && computerSelection=="SCISSORS") || (playerSelection=="PAPER" && computerSelection=="ROCK") || (playerSelection=="SCISSORS" && computerSelection=="PAPER"))
-                {
-                    return "P";
-                }
-                if((playerSelection=="ROCK" && computerSelection=="PAPER") || (playerSelection=="PAPER" && computerSelection=="SCISSORS") || (playerSelection=="SCISSORS" && computerSelection=="ROCK"))
-                {
-                    return "C";
-                }
-            }
-
-            function validateSelection (selection)
-            {
-                while(!((selection.toUpperCase() == "ROCK") || (selection.toUpperCase() == "PAPER") || (selection.toUpperCase() == "SCISSORS")))
-                {
-                    selection = prompt("C'mon, you know this game! Please write only one of the possible options: ROCK, PAPER or SCISSORS:");
-                }
-                return selection.toUpperCase();
-            }
-
-            function game()
-            {
-                let playerPoints=0, cpuPoints=0;
-                for (let i = 0; i < 5 ; i++)
-                {
-                    console.log("ROUND " + (i+1));
-
-                    const cpuSelection = computerPlay();
-                    let playerSelection = prompt("Write your selection: ");
-                    playerSelection = playerSelection.toUpperCase();
-                    playerSelection = validateSelection(playerSelection)
-
-                    let result = playSingleRound(playerSelection, cpuSelection);
-                    if(result == "T")
-                    {
-                        console.log("IT'S A TIE; BOTH CHOOSE " + playerSelection)
-                    }
-                    if(result == "P")
-                    {
-                        playerPoints++;
-                        console.log("+ PLAYER WINS; " + playerSelection + " BEATS " + cpuSelection)
-                    }
-                    if(result == "C")
-                    {
-                        cpuPoints++;
-                        console.log("- COMPUTER WINS; " + cpuSelection + " BEATS " + playerSelection)
-                    }
-
-                }
-                if(playerPoints < cpuPoints)
-                {
-                    return "SORRY, YOU LOSE THE GAME!!"
-                }
-                if(playerPoints > cpuPoints)
-                {
-                    return "CONGRATULATIONS, YOU WIN THE GAME!!"
-                }
-                if(playerPoints == cpuPoints)
-                {
-                    return "IT'S A TIE"
-                }
-            }
-        </script>
+        <div class="cover"></div>
+        <div class="winnerPopup">
+            <h1 id="whoWon"></h1>
+            <h3>Do you want to play again?</h3>
+            <div class="foot-btns">
+                <button class="gamectrl_btn" id="continue">NEW GAME</button>
+                <button class="gamectrl_btn" id="finish">END GAME</button>
+            </div>
+        </div>
+        <script src="./js/script.js"></script>
     </body>
 </html>
